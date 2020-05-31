@@ -4,8 +4,9 @@ import (
 	"bufio"
 	"flag"
 	"fmt"
-	"log"
 	"os"
+
+	"github.com/dnozdrin/piglatin/logger"
 
 	lang "github.com/dnozdrin/piglatin/language"
 	"github.com/dnozdrin/piglatin/parser"
@@ -14,30 +15,22 @@ import (
 	_ "github.com/dnozdrin/piglatin/parser/regex"
 )
 
-// todo:
-// - pass all linters
-// todo: consider multithread
-// todo: benchmarks
-// todo: big file handling
-// todo: add parser priority
-// todo: check type pointer / value in code and tests
 func main() {
-	var result string
-	langKey := *flag.String("lang", "en", "The source language key.")
+	var result, langKey string
+
+	flag.StringVar(&langKey, "lang", "en", "The source language key.")
 	flag.Parse()
 
 	scanner := bufio.NewScanner(os.Stdin)
 	scanner.Split(bufio.ScanLines)
 	psr, err := parser.NewParser(langKey)
 	if err != nil {
-		log.Printf("reading input: %s", err)
-		os.Exit(1)
+		logger.Error.Fatalf("reading input: %s", err)
 	}
 
 	tr, err := lang.NewTranslator(langKey)
 	if err != nil {
-		log.Printf("translation: %s", err)
-		os.Exit(1)
+		logger.Error.Fatal(err)
 	}
 	for scanner.Scan() {
 		result = ""
@@ -52,7 +45,6 @@ func main() {
 		fmt.Println(result)
 	}
 	if err := scanner.Err(); err != nil {
-		log.Printf("reading input: %s", err)
-		os.Exit(1)
+		logger.Error.Fatalf("reading input: %s", err)
 	}
 }
