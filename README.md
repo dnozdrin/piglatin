@@ -6,12 +6,16 @@
 
 ---
 
-`piglatin` is a fast [Pig Latin](https://en.wikipedia.org/wiki/Pig_Latin) translator written in Go. 
+`piglatin` is a fast pipeline [Pig Latin](https://en.wikipedia.org/wiki/Pig_Latin) translator written in Go. 
 
 ## Badges
 [![dnozdrin](https://circleci.com/gh/dnozdrin/piglatin.svg?style=shield)](https://circleci.com/gh/dnozdrin/piglatin)
+[![codecov](https://codecov.io/gh/dnozdrin/piglatin/branch/master/graph/badge.svg)](https://codecov.io/gh/dnozdrin/piglatin)
+[![dnozdrin](https://goreportcard.com/badge/github.com/dnozdrin/piglatin)](https://goreportcard.com/report/github.com/dnozdrin/piglatin)
 [![License](https://img.shields.io/github/license/dnozdrin/piglatin)](/LICENSE)
 [![Release](https://img.shields.io/github/release/dnozdrin/piglatin.svg)](https://github.com/dnozdrin/piglatin/releases/latest)
+
+## Description
 
 ### The algorithm of work
 - Ensures proper capitalization
@@ -28,10 +32,15 @@
 |---|---|---|
 |English|`en`|is used implicitly by default|
 
-### Usage
+## Usage
 - Run `go run build` to build the project.
 - Run `./piglatin`, enter the text that must be translated to the Pig Latin.
 - Enter `:q` on a new line to exit.
 
 Or
 - Run `./piglatin < input.txt > output.txt` to translate the text in files.
+
+### Known issues
+- The app works as a pipeline (stdin > app > stout). Though a file logger is used, for an accurate work with text files
+arguments like "input" / "output" should be added.
+- In case of new parsers add, a priority or an explicit parser call should be implemented.
