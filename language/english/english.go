@@ -25,6 +25,7 @@ func NewEnglish() *English {
 	return &English{}
 }
 
+// English represents a translator to Pig Latin from English language
 type English struct{}
 
 // Translate will translate a English word to Pig Latin.

@@ -1,8 +1,9 @@
 package regex
 
 import (
-	"github.com/dnozdrin/piglatin/parser"
 	"regexp"
+
+	"github.com/dnozdrin/piglatin/parser"
 )
 
 const pattern = `([^\s—'[:punct:]]+)+([\s—'[:punct:]]*)`
@@ -11,6 +12,7 @@ func init() {
 	parser.Register(NewRegex(regexp.MustCompile(pattern)))
 }
 
+// Regex represents a regex parser
 type Regex struct {
 	expr     *regexp.Regexp
 	supports map[string]struct{}

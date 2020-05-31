@@ -4,6 +4,8 @@ import "fmt"
 
 var translators = make(map[string]Translator)
 
+// Translator represents an interface for translators to Pig Latin
+// from different languages
 type Translator interface {
 	Translate(text string) string
 }

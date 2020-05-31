@@ -4,6 +4,7 @@ import "fmt"
 
 var parsers []Parser
 
+// Parser represents an interface for text parsers
 type Parser interface {
 	CanHandle(key string) bool
 	Parse(text string) []string
