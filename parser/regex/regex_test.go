@@ -7,7 +7,7 @@ import (
 )
 
 var languages = []struct {
-	in string
+	in  string
 	out bool
 }{
 	{"en", true},
@@ -30,7 +30,7 @@ func TestCanHandle(t *testing.T) {
 }
 
 var samples = []struct {
-	in string
+	in  string
 	out []string
 }{
 	{"The quick brown fox jumps over a lazy dog.",
@@ -38,7 +38,7 @@ var samples = []struct {
 	},
 	{"latin-banana", []string{"latin", "-", "banana"}},
 	{"По-моему, это неплохой тест", []string{"По", "-", "моему", ", ", "это", " ", "неплохой", " ", "тест"}},
-	{"Україна — унітарна держава.", []string{"Україна", " — ", "унітарна", " ", "держава",  "."}},
+	{"Україна — унітарна держава.", []string{"Україна", " — ", "унітарна", " ", "держава", "."}},
 }
 
 func TestParse(t *testing.T) {

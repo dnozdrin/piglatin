@@ -12,7 +12,7 @@ func init() {
 }
 
 type Regex struct {
-	expr *regexp.Regexp
+	expr     *regexp.Regexp
 	supports map[string]struct{}
 }
 
