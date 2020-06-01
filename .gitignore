@@ -15,5 +15,4 @@
 vendor/
 .idea/
 .temp/
-/log/*.log
 /piglatin

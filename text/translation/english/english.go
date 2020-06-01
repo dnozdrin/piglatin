@@ -5,7 +5,7 @@ import (
 	"strings"
 	"unicode"
 
-	lang "github.com/dnozdrin/piglatin/language"
+	lang "github.com/dnozdrin/piglatin/text/translation"
 )
 
 const (

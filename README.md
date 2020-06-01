@@ -36,11 +36,10 @@
 - Run `go run build` to build the project.
 - Run `./piglatin`, enter the text that must be translated to the Pig Latin.
 - Enter `:q` on a new line to exit.
+- Run `./piglatin -h` see available options.
 
 Or
-- Run `./piglatin < input.txt > output.txt` to translate the text in files.
+- Run `./piglatin -source=input.txt -target=output.txt` to translate the text in the input file.
 
 ### Known issues
-- The app works as a pipeline (stdin > app > stout). Though a file logger is used, for an accurate work with text files
-arguments like "input" / "output" should be added.
 - In case of new parsers add, a priority or an explicit parser call should be implemented.

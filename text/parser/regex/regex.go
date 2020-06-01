@@ -3,7 +3,7 @@ package regex
 import (
 	"regexp"
 
-	"github.com/dnozdrin/piglatin/parser"
+	"github.com/dnozdrin/piglatin/text/parser"
 )
 
 const pattern = `([^\s—'[:punct:]]+)+([\s—'[:punct:]]*)`
@@ -30,7 +30,7 @@ func NewRegex(expr *regexp.Regexp) *Regex {
 	}
 }
 
-// CanHandle states if the parser can handler a language
+// CanHandle states if the parser can handle a language
 // with the given key
 func (r *Regex) CanHandle(key string) bool {
 	_, ok := r.supports[key]
