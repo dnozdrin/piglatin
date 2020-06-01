@@ -9,6 +9,7 @@ import (
 	"path/filepath"
 )
 
+// MainService represents the main app handler
 type MainService struct {
 	source, target string
 	reader         io.ReadCloser
@@ -32,7 +33,7 @@ func NewMainService(source, target string, processor Processor) *MainService {
 	}
 }
 
-// Run handles the main login of the app
+// Run handles the main logic of the app
 func (ms *MainService) Run() {
 	if ms.source != "" {
 		path, err := filepath.Abs(ms.source)
@@ -42,7 +43,7 @@ func (ms *MainService) Run() {
 
 		ms.reader, err = os.Open(path)
 		if err != nil {
-			log.Panicf("An error occured while opening file: %s", err)
+			log.Panicf("An error occurred while opening file: %s", err)
 		}
 		defer ms.reader.Close()
 	}
@@ -54,7 +55,7 @@ func (ms *MainService) Run() {
 		}
 		ms.writer, err = os.OpenFile(path, os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0666)
 		if err != nil {
-			log.Panicf("An error occured while opening file: %s", err)
+			log.Panicf("An error occurred while opening file: %s", err)
 		}
 
 		defer ms.writer.Close()

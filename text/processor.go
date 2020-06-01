@@ -8,7 +8,7 @@ import (
 	"github.com/dnozdrin/piglatin/text/translation"
 )
 
-// Processor represents a wrapper for text parsing and translation
+// LineProcessor represents a wrapper for text parsing and translation
 type LineProcessor struct {
 	translator translation.Translator
 	parser     parser.Parser
