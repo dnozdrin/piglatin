@@ -34,16 +34,16 @@ func NewMainService(source, target string, processor Processor) *MainService {
 }
 
 // Run handles the main logic of the app
-func (ms *MainService) Run() {
+func (ms *MainService) Run() error {
 	if ms.source != "" {
 		path, err := filepath.Abs(ms.source)
 		if err != nil {
-			log.Print(err)
+			return err
 		}
 
 		ms.reader, err = os.Open(path)
 		if err != nil {
-			log.Panicf("An error occurred while opening file: %s", err)
+			return fmt.Errorf("an error on file open: %s", err)
 		}
 		defer ms.reader.Close()
 	}
@@ -51,11 +51,11 @@ func (ms *MainService) Run() {
 	if ms.target != "" {
 		path, err := filepath.Abs(ms.target)
 		if err != nil {
-			log.Print(err)
+			return err
 		}
 		ms.writer, err = os.OpenFile(path, os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0666)
 		if err != nil {
-			log.Panicf("An error occurred while opening file: %s", err)
+			return fmt.Errorf("an error on file open: %s", err)
 		}
 
 		defer ms.writer.Close()
@@ -77,6 +77,8 @@ func (ms *MainService) Run() {
 	}
 
 	if err := scanner.Err(); err != nil {
-		log.Println(err)
+		return err
 	}
+
+	return nil
 }

@@ -6,7 +6,8 @@
 
 ---
 
-`piglatin` is a fast pipeline [Pig Latin](https://en.wikipedia.org/wiki/Pig_Latin) translator written in Go. 
+`piglatin` is a fast pipeline [Pig Latin](https://en.wikipedia.org/wiki/Pig_Latin) translator written in Go.
+The project was created only for purpose of learning Golang. It intentionally does not contain any third-party packages.
 
 ## Badges
 [![dnozdrin](https://circleci.com/gh/dnozdrin/piglatin.svg?style=shield)](https://circleci.com/gh/dnozdrin/piglatin)

@@ -1,7 +1,6 @@
 package english
 
 import (
-	"reflect"
 	"testing"
 )
 
@@ -19,17 +18,7 @@ var samples = []struct {
 	{"LittleBig", "IttleBiglay"},
 	{"I'm", "I'myay"},
 	{"cyanide", "yanidecay"},
-}
-
-func TestNewEnglish(t *testing.T) {
-	t.Run("constructor", func(t *testing.T) {
-		tr := NewEnglish()
-		givenType := reflect.TypeOf(*tr)
-		wantedType := reflect.TypeOf((*English)(nil)).Elem()
-		if givenType != wantedType {
-			t.Errorf("got %q, want %q", givenType, wantedType)
-		}
-	})
+	{"tst", "tst"},
 }
 
 func TestTranslate(t *testing.T) {

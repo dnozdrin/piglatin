@@ -29,6 +29,8 @@ func NewEnglish() *English {
 type English struct{}
 
 // Translate will translate a English word to Pig Latin.
+// As far as English alphabet is completely in the ASCII Table, it
+// works with bytes.
 // The next rules are considered:
 // - Ensures proper capitalization
 // - Correct upper case and lower case formatting
@@ -45,7 +47,8 @@ func (eng *English) Translate(word string) string {
 		return word + "yay"
 	}
 
-	var result string
+	result := word
+
 	isFirstUpper := unicode.IsUpper(rune(word[0]))
 	if isFirstUpper {
 		word = strings.ToLower(string(word[0])) + word[1:]

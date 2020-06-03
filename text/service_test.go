@@ -82,14 +82,17 @@ func TestFilesRun(t *testing.T) {
 
 			err = ioutil.WriteFile(inputFile.Name(), []byte(tt.in), 0755)
 			if err != nil {
-				t.Fatalf("Unable to write file: %v", err)
+				t.Fatalf("unable to write file: %v", err)
 			}
 			service := NewMainService(inputFile.Name(), outputFile.Name(), &testInterface{})
-			service.Run()
+			err = service.Run()
+			if err != nil {
+				t.Errorf("got error on service run")
+			}
 
 			output, err := ioutil.ReadFile(outputFile.Name())
 			if err != nil {
-				t.Fatalf("Unable to read file: %v", err)
+				t.Fatalf("unable to read file: %v", err)
 			}
 
 			result := string(output)
@@ -99,4 +102,15 @@ func TestFilesRun(t *testing.T) {
 			}
 		})
 	}
+}
+
+func TestFilesRunError(t *testing.T) {
+	t.Run("test source error", func(t *testing.T) {
+		service := NewMainService("dummy1", "", &testInterface{})
+		err := service.Run()
+
+		if err == nil {
+			t.Error("got nil, want error")
+		}
+	})
 }
